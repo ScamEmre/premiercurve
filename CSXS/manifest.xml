@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PremierCurve — CEP panel for Adobe Premiere Pro
+  Clean-room build. Concept inspired by OpenCurve (technique studied, code NOT reused)
+  + Eaze-style preset gallery & live motion preview.
+  Target: Premiere Pro 2025 / 2026 (CEP still loads; UXP is the long-term path).
+-->
+<ExtensionManifest Version="7.0" ExtensionBundleId="com.emrekazak.premiercurve.cep"
+    ExtensionBundleVersion="0.4.0" ExtensionBundleName="PremierCurve"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <ExtensionList>
+    <Extension Id="com.emrekazak.premiercurve.cep.panel" Version="0.4.0"/>
+  </ExtensionList>
+
+  <ExecutionEnvironment>
+    <HostList>
+      <!-- PPRO = Premiere Pro. Broad version range keeps it loading on 2024..2026+. -->
+      <Host Name="PPRO" Version="[0.0,99.9]"/>
+    </HostList>
+    <LocaleList>
+      <Locale Code="All"/>
+    </LocaleList>
+    <RequiredRuntimeList>
+      <!-- CSXS 9.0 = broadly compatible with CEP 9/10/11/12 hosts. -->
+      <RequiredRuntime Name="CSXS" Version="9.0"/>
+    </RequiredRuntimeList>
+  </ExecutionEnvironment>
+
+  <DispatchInfoList>
+    <Extension Id="com.emrekazak.premiercurve.cep.panel">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>./index.html</MainPath>
+          <!-- ScriptPath auto-loads the ExtendScript host into the JSX engine on panel start. -->
+          <ScriptPath>./jsx/host.jsx</ScriptPath>
+          <CEFCommandLine>
+            <Parameter>--enable-nodejs</Parameter>
+            <Parameter>--mixed-context</Parameter>
+          </CEFCommandLine>
+        </Resources>
+        <Lifecycle>
+          <AutoVisible>true</AutoVisible>
+        </Lifecycle>
+        <UI>
+          <Type>Panel</Type>
+          <Menu>PremierCurve</Menu>
+          <Geometry>
+            <Size>       <Width>440</Width> <Height>620</Height> </Size>
+            <MinSize>    <Width>380</Width> <Height>480</Height> </MinSize>
+            <MaxSize>    <Width>900</Width> <Height>1200</Height></MaxSize>
+          </Geometry>
+          <Icons>
+            <Icon Type="Normal">./icons/icon.png</Icon>
+            <Icon Type="DarkNormal">./icons/icon.png</Icon>
+            <Icon Type="RollOver">./icons/icon.png</Icon>
+            <Icon Type="DarkRollOver">./icons/icon.png</Icon>
+          </Icons>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+</ExtensionManifest>

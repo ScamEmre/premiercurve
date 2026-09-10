@@ -1,0 +1,13 @@
+# Fonts — Neue Haas Grotesk is a commercial font, NOT redistributable publicly.
+# Panel falls back to system fonts without it; the site ZIP ships the full styled build.
+fonts/
+
+# Dev / local only
+.debug
+*.log
+Thumbs.db
+.DS_Store
+
+# Build artifacts / archives
+*.zxp
+*.zip

@@ -1,0 +1,191 @@
+═══════════════════════════════════════════════════════════════
+  PremierCurve — Adobe Premiere Pro easing / bezier curve panel
+  emrekazak.com · v0.4
+  TÜRKÇE aşağıda · ENGLISH below · РУССКИЙ ниже
+═══════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────
+  TÜRKÇE
+──────────────────────────────────────────────────────────────
+
+NEDİR?
+  Premiere Pro'da keyframe'lerine özel yumuşatma (easing) eğrileri
+  uygulayan bir panel. Hazır 31 preset (Ease, Cubic, Back, Elastic,
+  Bounce…) + kendi eğrini çizebileceğin kare bezier editörü + her
+  eğrinin ne animasyon yaptığını gösteren canlı önizleme.
+  v0.4: Arayüz artık ÜÇ DİLLİ — Türkçe / English / Русский.
+  Panelin sağ alt köşesindeki TR · EN · RU düğmelerinden seçilir;
+  ilk açılışta Premiere'in arayüz diline göre otomatik seçilir.
+
+GEREKSİNİM
+  • Adobe Premiere Pro 2024 veya üzeri (2025 / 2026 önerilir)
+  • Windows veya macOS
+
+KURULUM (2 adım)
+
+1) İMZASIZ EKLENTİ İZNİNİ AÇ  (bir kez, PlayerDebugMode)
+
+   ▸ WINDOWS
+     Kayıt defterinde (regedit) şu anahtarı aç veya oluştur:
+        HKEY_CURRENT_USER\Software\Adobe\CSXS.11
+        HKEY_CURRENT_USER\Software\Adobe\CSXS.12
+     Her birine String (REG_SZ) değer ekle:
+        Ad:    PlayerDebugMode
+        Değer: 1
+
+   ▸ macOS  (Terminal)
+        defaults write com.adobe.CSXS.11 PlayerDebugMode 1
+        defaults write com.adobe.CSXS.12 PlayerDebugMode 1
+
+2) KLASÖRÜ KOPYALA
+   Bu zip içindeki  "com.emrekazak.premiercurve.cep"  klasörünü
+   olduğu gibi şuraya kopyala:
+
+   ▸ WINDOWS
+     %APPDATA%\Adobe\CEP\extensions\
+     (tam yol: C:\Users\<KULLANICI>\AppData\Roaming\Adobe\CEP\extensions\)
+
+   ▸ macOS
+     ~/Library/Application Support/Adobe/CEP/extensions/
+
+3) Premiere Pro'yu yeniden başlat →
+   Window (Pencere) ▸ Extensions ▸ PremierCurve
+   (görünmezse: Window ▸ Extensions (Legacy) altına bak)
+
+KULLANIM
+  1. Zaman çizelgesinde en az 2 keyframe'i olan bir klip seç
+     (ör. Effect Controls ▸ Motion ▸ Position — başa/sona keyframe).
+  2. Bir preset seç, ya da kendi eğrini çiz
+     (noktaları sürükle veya cubic-bezier(...) yapıştır).
+  3. "Keyframe'lere Uygula" → eğri keyframe'lere işlenir.
+  4. "✕ Kaldır" → tek tıkla temizler (2 uç keyframe kalır).
+     Farklı bir eğri uygulamak istersen direkt yeni preset'e bas;
+     öncekini otomatik değiştirir.
+
+NOT
+  • Eğri, çok sayıda ara keyframe olarak "bake" edilir — bu yüzden
+    Ctrl+Z tek tek geri alır; onun yerine "✕ Kaldır" kullan.
+  • Sorun/istek: emrekazak.com
+
+──────────────────────────────────────────────────────────────
+  ENGLISH
+──────────────────────────────────────────────────────────────
+
+WHAT IS IT?
+  A panel that applies custom easing curves to your keyframes in
+  Premiere Pro. 31 ready presets (Ease, Cubic, Back, Elastic,
+  Bounce…) + a square bezier editor to draw your own curve + a live
+  preview showing what each curve animates like.
+  v0.4: The UI is now TRILINGUAL — Türkçe / English / Русский.
+  Pick a language with the TR · EN · RU buttons at the bottom right;
+  on first launch it auto-matches Premiere's UI language.
+
+REQUIREMENTS
+  • Adobe Premiere Pro 2024 or newer (2025 / 2026 recommended)
+  • Windows or macOS
+
+INSTALL (2 steps)
+
+1) ALLOW UNSIGNED EXTENSIONS  (once, PlayerDebugMode)
+
+   ▸ WINDOWS
+     In the registry (regedit) open or create these keys:
+        HKEY_CURRENT_USER\Software\Adobe\CSXS.11
+        HKEY_CURRENT_USER\Software\Adobe\CSXS.12
+     Add a String (REG_SZ) value to each:
+        Name:  PlayerDebugMode
+        Value: 1
+
+   ▸ macOS  (Terminal)
+        defaults write com.adobe.CSXS.11 PlayerDebugMode 1
+        defaults write com.adobe.CSXS.12 PlayerDebugMode 1
+
+2) COPY THE FOLDER
+   Copy the "com.emrekazak.premiercurve.cep" folder from this zip,
+   as-is, into:
+
+   ▸ WINDOWS
+     %APPDATA%\Adobe\CEP\extensions\
+     (full path: C:\Users\<USER>\AppData\Roaming\Adobe\CEP\extensions\)
+
+   ▸ macOS
+     ~/Library/Application Support/Adobe/CEP/extensions/
+
+3) Restart Premiere Pro →
+   Window ▸ Extensions ▸ PremierCurve
+   (if it doesn't show: look under Window ▸ Extensions (Legacy))
+
+USAGE
+  1. Select a clip with at least 2 keyframes in the timeline
+     (e.g. Effect Controls ▸ Motion ▸ Position — keyframe at start/end).
+  2. Pick a preset, or draw your own curve
+     (drag the handles or paste a cubic-bezier(...)).
+  3. "Apply to Keyframes" → the curve is baked onto the keyframes.
+  4. "✕ Remove" → one-click cleanup (the 2 anchor keyframes remain).
+     To apply a different curve just hit another preset;
+     it replaces the previous one automatically.
+
+NOTE
+  • The curve is "baked" as many intermediate keyframes — so Ctrl+Z
+    undoes them one by one; use "✕ Remove" instead.
+  • Issues/requests: emrekazak.com
+
+──────────────────────────────────────────────────────────────
+  РУССКИЙ
+──────────────────────────────────────────────────────────────
+
+ЧТО ЭТО?
+  Панель, применяющая свои кривые сглаживания (easing) к ключевым
+  кадрам в Premiere Pro. 31 готовый пресет (Ease, Cubic, Back,
+  Elastic, Bounce…) + bezier-редактор для своей кривой + живой
+  предпросмотр анимации каждой кривой.
+  v0.4: Интерфейс теперь на ТРЁХ языках — Türkçe / English / Русский.
+  Язык выбирается кнопками TR · EN · RU внизу справа; при первом
+  запуске подбирается автоматически по языку интерфейса Premiere.
+
+ТРЕБОВАНИЯ
+  • Adobe Premiere Pro 2024 или новее (рекомендуется 2025 / 2026)
+  • Windows или macOS
+
+УСТАНОВКА (2 шага)
+
+1) РАЗРЕШИТЕ НЕПОДПИСАННЫЕ РАСШИРЕНИЯ  (однократно, PlayerDebugMode)
+
+   ▸ WINDOWS
+     В реестре (regedit) откройте или создайте ключи:
+        HKEY_CURRENT_USER\Software\Adobe\CSXS.11
+        HKEY_CURRENT_USER\Software\Adobe\CSXS.12
+     В каждый добавьте строковое значение (REG_SZ):
+        Имя:      PlayerDebugMode
+        Значение: 1
+
+   ▸ macOS  (Терминал)
+        defaults write com.adobe.CSXS.11 PlayerDebugMode 1
+        defaults write com.adobe.CSXS.12 PlayerDebugMode 1
+
+2) СКОПИРУЙТЕ ПАПКУ
+   Скопируйте папку "com.emrekazak.premiercurve.cep" из этого zip
+   как есть в:
+
+   ▸ WINDOWS
+     %APPDATA%\Adobe\CEP\extensions\
+
+   ▸ macOS
+     ~/Library/Application Support/Adobe/CEP/extensions/
+
+3) Перезапустите Premiere Pro →
+   Window ▸ Extensions ▸ PremierCurve
+   (если не видно: Window ▸ Extensions (Legacy))
+
+ИСПОЛЬЗОВАНИЕ
+  1. Выберите на таймлайне клип минимум с 2 ключевыми кадрами.
+  2. Выберите пресет или нарисуйте свою кривую.
+  3. «Применить к ключам» → кривая запекается в ключевые кадры.
+  4. «✕ Убрать» → очистка в один клик (2 крайних ключа остаются).
+
+ПРИМЕЧАНИЕ
+  • Кривая «запекается» множеством промежуточных ключей — Ctrl+Z
+    отменяет их по одному; используйте «✕ Убрать».
+  • Вопросы/пожелания: emrekazak.com
+
+© emrekazak.com — kişisel/ücretsiz kullanım · personal/free use · личное/бесплатное использование.
