@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://emrekazak.com;">
+  <title>PremierCurve</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <header class="hd">
+      <div class="brand">
+        <span class="brand-mark">EK<i>.</i></span>
+        <span class="brand-name">PremierCurve</span>
+        <span class="brand-ver">v0.4</span>
+      </div>
+      <div id="conn" class="conn conn--wait" data-i18n="conn.connecting" data-i18n-title="conn.title">connecting…</div>
+    </header>
+
+    <section class="stage">
+      <!-- object motion preview (the only free-running animation) -->
+      <div id="previewBox" class="preview-box">
+        <div class="pv-track"></div>
+        <div id="mover" class="mover"></div>
+      </div>
+
+      <!-- editable curve — every preset loads here with drag handles -->
+      <div class="editor-stage"><canvas id="curveEditor" class="editor-canvas"></canvas></div>
+
+      <div class="modes" id="modes">
+        <button class="mode is-active" data-mode="position" data-i18n="mode.position">Position</button>
+        <button class="mode" data-mode="scale" data-i18n="mode.scale">Scale</button>
+        <button class="mode" data-mode="opacity" data-i18n="mode.opacity">Opacity</button>
+        <button class="mode" data-mode="rotate" data-i18n="mode.rotate">Rotation</button>
+      </div>
+
+      <div class="active-row">
+        <span id="activeName" class="active-name">Ease Out</span>
+        <input id="cubicInput" class="cubic-input" spellcheck="false" value="cubic-bezier(0, 0, 0.58, 1)">
+        <button id="saveBtn" class="icon-btn" data-i18n-title="save.title" title="Save this curve">＋</button>
+      </div>
+
+      <div class="action-row">
+        <button id="clearBtn" class="btn-clear" data-i18n="clear.btn" data-i18n-title="clear.title">✕ Remove</button>
+        <button id="applyBtn" class="apply" data-i18n="apply.btn">Apply to Keyframes</button>
+      </div>
+    </section>
+
+    <section class="presetbar">
+      <nav id="tabs" class="tabs"></nav>
+      <div id="strip" class="strip"></div>
+    </section>
+
+    <footer class="ft">
+      <button id="updateBtn" class="update-notice" data-i18n="update.btn" data-i18n-title="update.title">⟳ Update</button>
+      <div id="status" class="status" data-i18n="status.ready">ready</div>
+      <div id="lang" class="lang" title="Language / Dil / Язык">
+        <button data-lang="tr">TR</button><button data-lang="en">EN</button><button data-lang="ru">RU</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="./js/lib/CSInterface.js"></script>
+  <script src="./js/i18n.js"></script>
+  <script src="./js/bezier.js"></script>
+  <script src="./js/presets.js"></script>
+  <script src="./js/preview.js"></script>
+  <script src="./js/editor.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
