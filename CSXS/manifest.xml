@@ -6,11 +6,11 @@
   Target: Premiere Pro 2025 / 2026 (CEP still loads; UXP is the long-term path).
 -->
 <ExtensionManifest Version="7.0" ExtensionBundleId="com.emrekazak.premiercurve.cep"
-    ExtensionBundleVersion="0.4.0" ExtensionBundleName="PremierCurve"
+    ExtensionBundleVersion="0.4.1" ExtensionBundleName="PremierCurve"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <ExtensionList>
-    <Extension Id="com.emrekazak.premiercurve.cep.panel" Version="0.4.0"/>
+    <Extension Id="com.emrekazak.premiercurve.cep.panel" Version="0.4.1"/>
   </ExtensionList>
 
   <ExecutionEnvironment>

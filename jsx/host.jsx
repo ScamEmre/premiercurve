@@ -54,32 +54,69 @@ function ccFirstSelectedClip(seq) {
   }
   return null;
 }
+/* Locale-independent property identity. Premiere LOCALIZES displayName
+   ("Scale" → "Skalieren" on a German host, "Motion" → "Bewegung"), so name
+   matching breaks outside English. Component.matchName ("AE.ADBE Motion")
+   and the parameter ORDER inside the intrinsic components are stable across
+   languages → key candidates by matchName + param index; English display
+   names are only a fallback for unknown components (e.g. Transform effect). */
+var CC_PARAM_KEYS = {
+  "AE.ADBE Motion":  { 0: "position", 1: "scale", 4: "rotation", 5: "anchor" },
+  "AE.ADBE Opacity": { 0: "opacity" }
+};
+function ccParamKey(compMatch, idx, dispName) {
+  var m = CC_PARAM_KEYS[compMatch];
+  if (m && m[idx] != null) return m[idx];
+  var n = String(dispName || "");
+  if (n.indexOf("Position") >= 0) return "position";
+  if (n.indexOf("Scale") >= 0 && n.indexOf("Width") < 0) return "scale";
+  if (n.indexOf("Rotation") >= 0) return "rotation";
+  if (n.indexOf("Opacity") >= 0) return "opacity";
+  return "";
+}
 function ccCandidates(clip) {
   var out = [], ci, pi;
   if (!clip || !clip.components) return out;
   for (ci = 0; ci < clip.components.numItems; ci++) {
-    var comp = clip.components[ci], props;
+    var comp = clip.components[ci], props, mn = "";
     try { props = comp.properties; } catch (e) { continue; }
     if (!props) continue;
+    try { mn = String(comp.matchName || ""); } catch (eMn) {}
     for (pi = 0; pi < props.numItems; pi++) {
       var prop = props[pi];
       try {
         if (!prop.isTimeVarying()) continue;
         var keys = prop.getKeys();
-        if (keys && keys.length >= 2) out.push({ prop: prop, name: comp.displayName + " › " + prop.displayName });
+        if (keys && keys.length >= 2) out.push({
+          prop: prop,
+          key: ccParamKey(mn, pi, prop.displayName),
+          name: comp.displayName + " › " + prop.displayName
+        });
       } catch (e2) {}
     }
   }
   return out;
 }
+/* spec = canonical key from the panel ("position"|"scale"|"rotation"|"opacity")
+   or "auto". No key match → legacy substring → auto preference (old behavior),
+   so a request for an un-keyframed property degrades exactly like v0.3 "auto". */
 function ccPickTarget(clip, spec) {
   var cands = ccCandidates(clip);
   if (!cands.length) return null;
-  if (spec && spec !== "auto") for (var i = 0; i < cands.length; i++) if (cands[i].name.indexOf(spec) >= 0) return cands[i];
-  var pref = ["Position", "Scale", "Rotation", "Opacity"];
-  for (var p = 0; p < pref.length; p++)
-    for (var k = 0; k < cands.length; k++)
-      if (cands[k].name.indexOf(pref[p]) >= 0) return cands[k];
+  spec = String(spec || "auto");
+  var i, p, k;
+  if (spec !== "auto") {
+    for (i = 0; i < cands.length; i++) if (cands[i].key === spec) return cands[i];
+    for (i = 0; i < cands.length; i++) if (cands[i].name.indexOf(spec) >= 0) return cands[i];
+  }
+  var pref = ["position", "scale", "rotation", "opacity"];
+  for (p = 0; p < pref.length; p++)
+    for (k = 0; k < cands.length; k++)
+      if (cands[k].key === pref[p]) return cands[k];
+  var prefEn = ["Position", "Scale", "Rotation", "Opacity"];
+  for (p = 0; p < prefEn.length; p++)
+    for (k = 0; k < cands.length; k++)
+      if (cands[k].name.indexOf(prefEn[p]) >= 0) return cands[k];
   return cands[0];
 }
 /* Messages are locale-free CODES (E_* / BAKED|… / PING|…) — the panel translates. */

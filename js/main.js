@@ -6,7 +6,7 @@
   "use strict";
 
   var SAMPLES = 30;
-  var APP_VERSION = "0.4";
+  var APP_VERSION = "0.4.1";
   var UPDATE_URL = "https://emrekazak.com/api/version.php?product=premiercurve";
   var PRODUCT_PAGE = "https://emrekazak.com/premiercurve.php#indir";
   var SAVED_CAT = "Kayıtlı";   // internal category key — display text via I18N.cat()
@@ -15,8 +15,14 @@
   var cs = new CSInterface();
   var preview = new Preview();
   var editor = null;
-  var state = { cat: "Temel", cur: null };
+  var state = { cat: "Temel", cur: null, mode: "position" };
   var updateInfo = null;       // last version-check result, re-rendered on language switch
+
+  /* Panel mode → canonical host key. The host resolves these via component
+     matchName + param index, so targeting works on localized (DE/FR/…) hosts
+     where displayName matching fails ("Scale" → "Skalieren"). */
+  var HOST_SPEC = { position: "position", scale: "scale", opacity: "opacity", rotate: "rotation" };
+  function hostSpec() { return HOST_SPEC[state.mode] || "auto"; }
 
   var $ = function (id) { return document.getElementById(id); };
   var t = function (key) { return I18N.t(key); };
@@ -205,12 +211,12 @@
     if (!cs.isConnected()) { setStatus(t("status.noHost"), "err"); return; }
     var csv = Bezier.sample(state.cur.ease, SAMPLES).map(function (n) { return n.toFixed(5); }).join(",");
     setStatus(t("status.applying"));
-    callHost('ocBake("auto",' + JSON.stringify(csv) + ')', statusFromHost);
+    callHost('ocBake(' + JSON.stringify(hostSpec()) + ',' + JSON.stringify(csv) + ')', statusFromHost);
   }
   function clearEasing() {
     if (!cs.isConnected()) { setStatus(t("status.noHost"), "err"); return; }
     setStatus(t("status.removing"));
-    callHost('ocClear("auto")', statusFromHost);
+    callHost('ocClear(' + JSON.stringify(hostSpec()) + ')', statusFromHost);
   }
 
   function buildModes() {
@@ -218,7 +224,8 @@
       btn.onclick = function () {
         Array.prototype.forEach.call($("modes").children, function (b) { b.classList.remove("is-active"); });
         btn.classList.add("is-active");
-        preview.setMode(btn.getAttribute("data-mode"));
+        state.mode = btn.getAttribute("data-mode");   // also the Apply/Remove target
+        preview.setMode(state.mode);
       };
     });
   }
