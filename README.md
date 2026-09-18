@@ -4,6 +4,8 @@
 
 # PremierCurve
 
+**English** · [Türkçe](README.tr.md)
+
 **Easing & bezier curve editor for Adobe Premiere Pro** — the graph editor Premiere never shipped.
 
 [![version](https://img.shields.io/badge/version-0.4.1-D6FF6B?labelColor=0A0A0A)](https://emrekazak.com/api/version.php?product=premiercurve)
