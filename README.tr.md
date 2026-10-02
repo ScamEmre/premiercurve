@@ -8,7 +8,7 @@
 
 **Adobe Premiere Pro için easing & bezier eğri editörü** — Premiere'in hiç vermediği graph editor.
 
-[![sürüm](https://img.shields.io/badge/s%C3%BCr%C3%BCm-0.4.1-D6FF6B?labelColor=0A0A0A)](https://emrekazak.com/api/version.php?product=premiercurve)
+[![sürüm](https://img.shields.io/badge/s%C3%BCr%C3%BCm-0.5-D6FF6B?labelColor=0A0A0A)](https://emrekazak.com/api/version.php?product=premiercurve)
 [![host](https://img.shields.io/badge/Premiere%20Pro-2024%2B-9999FF?labelColor=0A0A0A)](#gereksinimler)
 [![platform](https://img.shields.io/badge/platform-Windows%20%C2%B7%20macOS-F1F2F5?labelColor=0A0A0A)](#kurulum)
 [![arayüz dilleri](https://img.shields.io/badge/aray%C3%BCz-TR%20%C2%B7%20EN%20%C2%B7%20RU-E5FF8C?labelColor=0A0A0A)](#%C3%BC%C3%A7-dilli-aray%C3%BCz)
@@ -149,6 +149,7 @@ premiercurve-cep/
 
 | Sürüm | Tarih | Öne çıkanlar |
 |---|---|---|
+| **0.5** | 02.10.2026 | **Motion Blur düğmesi** — Transform efektini ekler, shutter angle'ı ayarlar (varsayılan 360°, değiştirilebilir) ve Konum/Ölçek/Dönme/Opaklık keyframe'lerini hareketi bozmadan Transform'a taşır; eğri editöründe **Shift kilidi** — tutamaçlar After Effects graph editöründeki gibi düz (yatay) oturur |
 | **0.4.1** | 18.09.2026 | Dilden bağımsız özellik hedefleme (`matchName` + parametre index'i); mod düğmeleri artık Uygula/Kaldır hedefini de seçiyor |
 | **0.4** | 09.09.2026 | Üç dilli arayüz (TR / EN / RU) + otomatik dil algılama; dilden bağımsız host protokolü |
 | **0.3** | 03.09.2026 | Editör-merkezli tek-ekran arayüz; her preset düzenlenebilir; playhead-segment hedefleme; güncelleme kontrolü |

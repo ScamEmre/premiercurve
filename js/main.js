@@ -6,11 +6,12 @@
   "use strict";
 
   var SAMPLES = 30;
-  var APP_VERSION = "0.4.1";
+  var APP_VERSION = "0.5";
   var UPDATE_URL = "https://emrekazak.com/api/version.php?product=premiercurve";
   var PRODUCT_PAGE = "https://emrekazak.com/premiercurve.php#indir";
   var SAVED_CAT = "Kayıtlı";   // internal category key — display text via I18N.cat()
   var LS_KEY = "premiercurve.customPresets";
+  var LS_BLUR = "premiercurve.shutterAngle";
 
   var cs = new CSInterface();
   var preview = new Preview();
@@ -38,6 +39,7 @@
     if (code === "BAKED"   && p.length >= 5) return I18N.f("host.baked",   { t0: p[1], t1: p[2], n: p[3], name: p.slice(4).join("|") });
     if (code === "CLEARED" && p.length >= 5) return I18N.f("host.cleared", { n: p[1], t0: p[2], t1: p[3], name: p.slice(4).join("|") });
     if (code === "CLEAN"   && p.length >= 4) return I18N.f("host.clean",   { t0: p[1], t1: p[2], name: p.slice(3).join("|") });
+    if (code === "BLUR"    && p.length >= 3) return I18N.f(Number(p[2]) > 0 ? "host.blur" : "host.blurNoMove", { a: p[1], n: p[2] });
     return payload;
   }
   function fmtHostErr(payload) {
@@ -219,6 +221,30 @@
     callHost('ocClear(' + JSON.stringify(hostSpec()) + ')', statusFromHost);
   }
 
+  // ── motion blur (Transform effect + shutter angle) ──
+  function blurAngle() {
+    var inp = $("blurAngle"), v = parseFloat(inp.value);
+    if (!isFinite(v)) v = 360;
+    v = Math.max(0, Math.min(360, Math.round(v)));
+    inp.value = v;
+    try { localStorage.setItem(LS_BLUR, String(v)); } catch (e) {}
+    return v;
+  }
+  function applyMotionBlur() {
+    var a = blurAngle();
+    if (!cs.isConnected()) { setStatus(t("status.noHost"), "err"); return; }
+    setStatus(t("status.blurring"));
+    callHost('ocMotionBlur(' + a + ')', statusFromHost);
+  }
+  function initBlur() {
+    var inp = $("blurAngle"), saved = null;
+    try { saved = localStorage.getItem(LS_BLUR); } catch (e) {}
+    if (saved != null && isFinite(parseFloat(saved))) inp.value = Math.max(0, Math.min(360, Math.round(parseFloat(saved))));
+    inp.addEventListener("change", blurAngle);
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { blurAngle(); inp.blur(); } });
+    $("blurBtn").onclick = applyMotionBlur;
+  }
+
   function buildModes() {
     Array.prototype.forEach.call($("modes").children, function (btn) {
       btn.onclick = function () {
@@ -277,6 +303,7 @@
     preview.start();
     setTimeout(function () { editor.resize(); }, 0);
 
+    initBlur();
     $("applyBtn").onclick = applyEasing;
     $("clearBtn").onclick = clearEasing;
     $("saveBtn").onclick = function () {

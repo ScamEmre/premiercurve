@@ -52,6 +52,15 @@
       "host.baked": "{name} • {t0}–{t1}s • {n} kf",
       "host.clean": "{name} • {t0}–{t1}s zaten temiz",
       "host.cleared": "{name} • {n} kf kaldırıldı ({t0}–{t1}s)",
+      "blur.btn": "Motion Blur",
+      "blur.title": "Seçili klibe Transform efekti ekler, shutter angle'ı ayarlar ve Konum/Ölçek/Dönme/Opaklık keyframe'lerini Transform'a taşır (hareket mesafesi korunur) — hareket bulanıklığı için",
+      "blur.angleTitle": "Shutter angle (0–360°). 360 = en güçlü bulanıklık, 180 = sinema standardı",
+      "editor.title": "Tutamaçları sürükle. Shift = tutamaç düz (yatay) kilitlenir, After Effects'teki gibi",
+      "status.blurring": "motion blur uygulanıyor…",
+      "host.E_BLUR_ADD": "Transform efekti eklenemedi — Effects panelinden Transform'u klibe sürükle, sonra tekrar tıkla",
+      "host.E_BLUR_PARAM": "Transform efektinde Shutter Angle bulunamadı",
+      "host.blur": "Motion blur • {a}° • {n} keyframe Transform'a taşındı",
+      "host.blurNoMove": "Motion blur • {a}° • Transform hazır — animasyonu Transform içinde yap",
       "host.ping": "{app} • klip: {clip}"
     },
     en: {
@@ -96,6 +105,15 @@
       "host.baked": "{name} • {t0}–{t1}s • {n} kf",
       "host.clean": "{name} • {t0}–{t1}s already clean",
       "host.cleared": "{name} • {n} kf removed ({t0}–{t1}s)",
+      "blur.btn": "Motion Blur",
+      "blur.title": "Adds the Transform effect to the selected clip, sets its shutter angle and moves keyframed Position/Scale/Rotation/Opacity into Transform (the move stays identical) — for motion blur",
+      "blur.angleTitle": "Shutter angle (0–360°). 360 = strongest blur, 180 = cinema standard",
+      "editor.title": "Drag the handles. Shift = handle snaps flat (horizontal), like the After Effects graph editor",
+      "status.blurring": "applying motion blur…",
+      "host.E_BLUR_ADD": "Couldn't add the Transform effect — drag Transform from the Effects panel onto the clip, then click again",
+      "host.E_BLUR_PARAM": "Shutter Angle not found on the Transform effect",
+      "host.blur": "Motion blur • {a}° • {n} keyframes moved to Transform",
+      "host.blurNoMove": "Motion blur • {a}° • Transform ready — animate inside Transform",
       "host.ping": "{app} • clip: {clip}"
     },
     ru: {
@@ -140,6 +158,15 @@
       "host.baked": "{name} • {t0}–{t1}s • {n} kf",
       "host.clean": "{name} • {t0}–{t1}s уже чисто",
       "host.cleared": "{name} • удалено {n} kf ({t0}–{t1}s)",
+      "blur.btn": "Motion Blur",
+      "blur.title": "Добавляет эффект Transform к выбранному клипу, задаёт shutter angle и переносит ключи положения/масштаба/поворота/непрозрачности в Transform (движение сохраняется) — для размытия в движении",
+      "blur.angleTitle": "Shutter angle (0–360°). 360 = максимальное размытие, 180 = киностандарт",
+      "editor.title": "Перетаскивайте маркеры. Shift = маркер фиксируется горизонтально, как в редакторе графиков After Effects",
+      "status.blurring": "применяется motion blur…",
+      "host.E_BLUR_ADD": "Не удалось добавить эффект Transform — перетащите Transform из панели Effects на клип и нажмите снова",
+      "host.E_BLUR_PARAM": "Shutter Angle не найден в эффекте Transform",
+      "host.blur": "Motion blur • {a}° • {n} ключей перенесено в Transform",
+      "host.blurNoMove": "Motion blur • {a}° • Transform готов — анимируйте внутри Transform",
       "host.ping": "{app} • клип: {clip}"
     }
   };

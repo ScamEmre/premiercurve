@@ -8,7 +8,7 @@
 
 **Easing & bezier curve editor for Adobe Premiere Pro** — the graph editor Premiere never shipped.
 
-[![version](https://img.shields.io/badge/version-0.4.1-D6FF6B?labelColor=0A0A0A)](https://emrekazak.com/api/version.php?product=premiercurve)
+[![version](https://img.shields.io/badge/version-0.5-D6FF6B?labelColor=0A0A0A)](https://emrekazak.com/api/version.php?product=premiercurve)
 [![host](https://img.shields.io/badge/Premiere%20Pro-2024%2B-9999FF?labelColor=0A0A0A)](#requirements)
 [![platform](https://img.shields.io/badge/platform-Windows%20%C2%B7%20macOS-F1F2F5?labelColor=0A0A0A)](#install)
 [![ui languages](https://img.shields.io/badge/UI-TR%20%C2%B7%20EN%20%C2%B7%20RU-E5FF8C?labelColor=0A0A0A)](#trilingual-ui)
@@ -149,6 +149,7 @@ premiercurve-cep/
 
 | Version | Date | Highlights |
 |---|---|---|
+| **0.5** | 2026-10-02 | **Motion Blur button** — adds the Transform effect, sets the shutter angle (default 360°, adjustable) and moves keyframed Position/Scale/Rotation/Opacity into Transform, keeping the on-screen move identical; **Shift-constrain** in the curve editor — handles snap flat like the After Effects graph editor |
 | **0.4.1** | 2026-09-18 | Locale-independent property targeting (`matchName` + param index); mode buttons now select the Apply/Remove target |
 | **0.4** | 2026-09-09 | Trilingual UI (TR / EN / RU) with auto-detection; locale-free host protocol |
 | **0.3** | 2026-09-03 | Editor-centric single-screen UI; every preset editable; playhead-segment targeting; update check |

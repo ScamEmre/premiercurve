@@ -1,6 +1,6 @@
 ═══════════════════════════════════════════════════════════════
   PremierCurve — Adobe Premiere Pro easing / bezier curve panel
-  emrekazak.com · v0.4
+  emrekazak.com · v0.5
   TÜRKÇE aşağıda · ENGLISH below · РУССКИЙ ниже
 ═══════════════════════════════════════════════════════════════
 
@@ -16,6 +16,10 @@ NEDİR?
   v0.4: Arayüz artık ÜÇ DİLLİ — Türkçe / English / Русский.
   Panelin sağ alt köşesindeki TR · EN · RU düğmelerinden seçilir;
   ilk açılışta Premiere'in arayüz diline göre otomatik seçilir.
+  v0.5: MOTION BLUR düğmesi — seçili klibe Transform efektini ekler,
+  shutter angle'ı ayarlar (varsayılan 360°) ve Konum/Ölçek/
+  Dönme/Opaklık keyframe'lerini Transform'a taşır. Eğri editöründe
+  SHIFT basılıyken tutamaç düz (yatay) kilitlenir — After Effects gibi.
 
 GEREKSİNİM
   • Adobe Premiere Pro 2024 veya üzeri (2025 / 2026 önerilir)
@@ -79,6 +83,10 @@ WHAT IS IT?
   v0.4: The UI is now TRILINGUAL — Türkçe / English / Русский.
   Pick a language with the TR · EN · RU buttons at the bottom right;
   on first launch it auto-matches Premiere's UI language.
+  v0.5: MOTION BLUR button — adds the Transform effect to the selected
+  clip, sets the shutter angle (default 360°) and moves keyframed
+  Position/Scale/Rotation/Opacity into Transform. In the curve editor,
+  hold SHIFT to snap a handle flat (horizontal) — like After Effects.
 
 REQUIREMENTS
   • Adobe Premiere Pro 2024 or newer (2025 / 2026 recommended)
@@ -142,6 +150,10 @@ NOTE
   v0.4: Интерфейс теперь на ТРЁХ языках — Türkçe / English / Русский.
   Язык выбирается кнопками TR · EN · RU внизу справа; при первом
   запуске подбирается автоматически по языку интерфейса Premiere.
+  v0.5: кнопка MOTION BLUR — добавляет эффект Transform к выбранному
+  клипу, задаёт shutter angle (по умолчанию 360°) и переносит ключи
+  (положение/масштаб/поворот/непрозрачность) в Transform. В редакторе кривой
+  SHIFT фиксирует маркер горизонтально — как в After Effects.
 
 ТРЕБОВАНИЯ
   • Adobe Premiere Pro 2024 или новее (рекомендуется 2025 / 2026)

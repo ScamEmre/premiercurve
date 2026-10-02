@@ -16,6 +16,8 @@
     this.ease = Bezier.cubicBezier(0.25, 0.10, 0.25, 1.0);
     this.traceT = null;
     this.drag = -1;
+    this.snap = false;
+    this._lastPos = null;
     this._bind();
     this.resize();
   }
@@ -78,23 +80,41 @@
   };
   CurveEditor.prototype._bind = function () {
     var self = this;
-    this.canvas.addEventListener("mousedown", function (e) {
-      var pos = self._localPos(e);
-      self.drag = self._hit(pos);
-      if (self.drag >= 0) { e.preventDefault(); self.canvas.style.cursor = "grabbing"; }
-    });
-    global.addEventListener("mousemove", function (e) {
-      var pos = self._localPos(e);
-      if (self.drag < 0) { self.canvas.style.cursor = (self._hit(pos) >= 0) ? "grab" : "default"; return; }
+    /* Shift = constrain like the After Effects graph editor: the handle snaps flat
+       onto its anchor's level (P1 -> y 0, P2 -> y 1) and only slides horizontally.
+       Pressing/releasing Shift mid-drag re-applies from the last pointer position. */
+    function moveTo(pos, shift) {
       var x = Math.max(0, Math.min(1, self._invX(pos.x)));
-      var y = Math.max(Y_MIN, Math.min(Y_MAX, self._invY(pos.y)));
+      var y = shift ? (self.drag === 0 ? 0 : 1) : Math.max(Y_MIN, Math.min(Y_MAX, self._invY(pos.y)));
+      self.snap = !!shift;
       if (self.drag === 0) { self.pts[0] = x; self.pts[1] = y; } else { self.pts[2] = x; self.pts[3] = y; }
       self.ease = Bezier.cubicBezier(self.pts[0], self.pts[1], self.pts[2], self.pts[3]);
       self.draw();
       self.onChange(self.pts.slice(0));
+    }
+    this.canvas.addEventListener("mousedown", function (e) {
+      var pos = self._localPos(e);
+      self.drag = self._hit(pos);
+      if (self.drag >= 0) {
+        e.preventDefault(); self.canvas.style.cursor = "grabbing";
+        self._lastPos = pos;
+        if (e.shiftKey) moveTo(pos, true);
+      }
     });
+    global.addEventListener("mousemove", function (e) {
+      var pos = self._localPos(e);
+      if (self.drag < 0) { self.canvas.style.cursor = (self._hit(pos) >= 0) ? "grab" : "default"; return; }
+      self._lastPos = pos;
+      moveTo(pos, e.shiftKey);
+    });
+    function onShift(e) {
+      if (e.key !== "Shift" || self.drag < 0 || !self._lastPos) return;
+      moveTo(self._lastPos, e.type === "keydown");
+    }
+    global.addEventListener("keydown", onShift);
+    global.addEventListener("keyup", onShift);
     global.addEventListener("mouseup", function () {
-      if (self.drag >= 0) { self.drag = -1; self.canvas.style.cursor = "grab"; }
+      if (self.drag >= 0) { self.drag = -1; self.snap = false; self._lastPos = null; self.canvas.style.cursor = "grab"; self.draw(); }
     });
   };
 
@@ -119,6 +139,15 @@
     ctx.fillRect(xL, Y(1), xR - xL, Y(0) - Y(1));
     ctx.strokeStyle = "rgba(241,242,245,0.20)";
     ctx.beginPath(); ctx.moveTo(xL, Y(0)); ctx.lineTo(xR, Y(0)); ctx.moveTo(xL, Y(1)); ctx.lineTo(xR, Y(1)); ctx.stroke();
+
+    // Shift-constraint rail: the level the dragged handle is locked to
+    if (this.snap && this.drag >= 0) {
+      var ry = Y(this.drag === 0 ? 0 : 1);
+      ctx.save();
+      ctx.setLineDash([4, 4]); ctx.lineWidth = 1.5; ctx.strokeStyle = "rgba(214,255,107,0.75)";
+      ctx.beginPath(); ctx.moveTo(xL, ry); ctx.lineTo(xR, ry); ctx.stroke();
+      ctx.restore();
+    }
 
     // handle guides + curve
     if (this.editable) {

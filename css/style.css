@@ -70,6 +70,26 @@ body::before{ content:""; position:fixed; inset:0; z-index:0; pointer-events:non
 .icon-btn:hover{ background:var(--surface-3); color:var(--accent); }
 
 /* Primary actions — Kaldır + Uygula, SAME height */
+/* motion blur row — secondary action (quiet surface), angle field with tabular digits */
+.blur-row{ display:flex; gap:7px; flex:0 0 auto; }
+.btn-blur{ flex:1 1 0; height:32px; display:inline-flex; align-items:center; justify-content:center; gap:8px; appearance:none; border:0; cursor:pointer;
+  padding:0 12px; border-radius:8px; font:inherit; font-size:12px; font-weight:500; background:var(--surface-2); color:var(--ink);
+  box-shadow:inset 0 0 0 1px rgba(241,242,245,0.07);
+  transition-property:background-color, color, box-shadow, transform; transition-duration:150ms; transition-timing-function:ease-out; }
+.btn-blur:hover{ background:var(--surface-3); color:var(--accent-hi); box-shadow:inset 0 0 0 1px var(--accent-deep); }
+.btn-blur:active{ transform:scale(.97); }
+.btn-blur:focus-visible, .blur-input:focus-visible{ outline:1.5px solid var(--accent); outline-offset:1px; }
+/* three trailing bars = a moving object's blur trail */
+.blur-ico{ position:relative; width:14px; height:10px; flex:0 0 auto; border-radius:3px; background:var(--accent);
+  box-shadow:-5px 0 0 -1px rgba(214,255,107,0.55), -10px 0 0 -2px rgba(214,255,107,0.28); margin-left:10px; }
+.blur-angle{ flex:0 0 auto; display:inline-flex; align-items:center; height:32px; padding:0 9px 0 4px; border-radius:8px; background:var(--surface-2);
+  box-shadow:inset 0 0 0 1px rgba(241,242,245,0.07); color:var(--ink-2); cursor:text; }
+.blur-angle:focus-within{ box-shadow:inset 0 0 0 1.5px var(--accent-deep); }
+.blur-input{ width:44px; height:28px; appearance:textfield; -moz-appearance:textfield; border:0; outline:none; background:transparent; color:var(--ink);
+  font:inherit; font-size:12px; text-align:right; font-variant-numeric:tabular-nums; }
+.blur-input::-webkit-outer-spin-button, .blur-input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
+.blur-unit{ font-size:12px; margin-left:1px; }
+
 .action-row{ display:flex; gap:7px; flex:0 0 auto; }
 .btn-clear, .apply{ height:40px; display:inline-flex; align-items:center; justify-content:center; appearance:none; border:0; cursor:pointer;
   white-space:nowrap; border-radius:var(--radius-sm); font-family:var(--font); font-size:11.5px;

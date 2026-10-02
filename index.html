@@ -14,7 +14,7 @@
       <div class="brand">
         <span class="brand-mark">EK<i>.</i></span>
         <span class="brand-name">PremierCurve</span>
-        <span class="brand-ver">v0.4.1</span>
+        <span class="brand-ver">v0.5</span>
       </div>
       <div id="conn" class="conn conn--wait" data-i18n="conn.connecting" data-i18n-title="conn.title">connecting…</div>
     </header>
@@ -27,7 +27,7 @@
       </div>
 
       <!-- editable curve — every preset loads here with drag handles -->
-      <div class="editor-stage"><canvas id="curveEditor" class="editor-canvas"></canvas></div>
+      <div class="editor-stage"><canvas id="curveEditor" class="editor-canvas" data-i18n-title="editor.title"></canvas></div>
 
       <div class="modes" id="modes">
         <button class="mode is-active" data-mode="position" data-i18n="mode.position" data-i18n-title="mode.title">Position</button>
@@ -40,6 +40,15 @@
         <span id="activeName" class="active-name">Ease Out</span>
         <input id="cubicInput" class="cubic-input" spellcheck="false" value="cubic-bezier(0, 0, 0.58, 1)">
         <button id="saveBtn" class="icon-btn" data-i18n-title="save.title" title="Save this curve">＋</button>
+      </div>
+
+      <!-- motion blur: Transform effect + shutter angle (moves Motion keyframes into Transform) -->
+      <div class="blur-row">
+        <button id="blurBtn" class="btn-blur" data-i18n-title="blur.title"><span class="blur-ico" aria-hidden="true"></span><span data-i18n="blur.btn">Motion Blur</span></button>
+        <label class="blur-angle" data-i18n-title="blur.angleTitle">
+          <input id="blurAngle" class="blur-input" type="number" min="0" max="360" step="1" value="360" inputmode="numeric" aria-label="Shutter angle">
+          <span class="blur-unit">°</span>
+        </label>
       </div>
 
       <div class="action-row">
