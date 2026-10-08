@@ -14,6 +14,7 @@
 [![arayüz dilleri](https://img.shields.io/badge/aray%C3%BCz-TR%20%C2%B7%20EN%20%C2%B7%20RU-E5FF8C?labelColor=0A0A0A)](#%C3%BC%C3%A7-dilli-aray%C3%BCz)
 [![lisans](https://img.shields.io/badge/lisans-MIT-A6CC42?labelColor=0A0A0A)](LICENSE)
 [![fiyat](https://img.shields.io/badge/fiyat-%C3%BCcretsiz%2C%20abonelik%20yok-D6FF6B?labelColor=0A0A0A)](https://emrekazak.com/premiercurve.php)
+[![kahve ısmarla](https://img.shields.io/badge/kahve%20%C4%B1smarla-destek-FFDD00?labelColor=0A0A0A&logo=buymeacoffee&logoColor=FFDD00)](https://buymeacoffee.com/emrekazak)
 
 [**⬇ İndir**](https://emrekazak.com/premiercurve.php#indir) · [Ürün sayfası](https://emrekazak.com/premiercurve.php) · [Hata bildir](https://github.com/ScamEmre/premiercurve/issues)
 
@@ -144,6 +145,10 @@ premiercurve-cep/
 ```
 
 </details>
+
+## Destek
+
+PremierCurve ücretsiz ve öyle kalacak. İşini kolaylaştırdıysa bir [kahve ısmarlayabilirsin](https://buymeacoffee.com/emrekazak); zorunlu değil, panele ayırdığım zamanı destekler.
 
 ## Sürüm geçmişi
 

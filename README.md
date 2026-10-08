@@ -14,6 +14,7 @@
 [![ui languages](https://img.shields.io/badge/UI-TR%20%C2%B7%20EN%20%C2%B7%20RU-E5FF8C?labelColor=0A0A0A)](#trilingual-ui)
 [![license](https://img.shields.io/badge/license-MIT-A6CC42?labelColor=0A0A0A)](LICENSE)
 [![price](https://img.shields.io/badge/price-free%2C%20no%20subscription-D6FF6B?labelColor=0A0A0A)](https://emrekazak.com/premiercurve.php)
+[![buy me a coffee](https://img.shields.io/badge/buy%20me%20a%20coffee-support-FFDD00?labelColor=0A0A0A&logo=buymeacoffee&logoColor=FFDD00)](https://buymeacoffee.com/emrekazak)
 
 [**⬇ Download**](https://emrekazak.com/premiercurve.php#indir) · [Product page](https://emrekazak.com/premiercurve.php) · [Report a bug](https://github.com/ScamEmre/premiercurve/issues)
 
@@ -144,6 +145,10 @@ premiercurve-cep/
 ```
 
 </details>
+
+## Support
+
+PremierCurve is free and stays free. If it saves you time, you can [buy me a coffee](https://buymeacoffee.com/emrekazak) — it is optional and it funds the hours that go into the panel.
 
 ## Changelog
 
